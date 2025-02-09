@@ -24,10 +24,11 @@ namespace EF_Test
         public DbSet<StudentBook> StudentBooks { get; set; }
         public DbSet<Attendance> Attendances { get; set; }
         public DbSet<Invoice> Invoices { get; set; }
+        public DbSet<Uniform> Uniforms { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //modelBuilder.Entity<Department>().Property(x => x.des).IsRequired();
+            //modelBuilder.Entity<Student>().HasIndex(x => x.Name);
 
             foreach (var relationship in modelBuilder.Model.GetEntityTypes()
                 .SelectMany(e => e.GetForeignKeys()))
@@ -47,6 +48,16 @@ namespace EF_Test
                 .HasComputedColumnSql("[customerTitle] + ' ' + [customerName]");
             modelBuilder.Entity<Invoice>().Property(x => x.total)
                 .HasComputedColumnSql("[price] * [qty]");
+
+            modelBuilder.HasSequence<int>("DeliveryOrder")
+                .StartsAt(101)
+                .IncrementsBy(1);
+
+            modelBuilder.Entity<Book>().Property(p => p.DeliveryOrder)
+                .HasDefaultValueSql("Next Value For DeliveryOrder");
+
+            modelBuilder.Entity<Uniform>().Property(p => p.DeliveryOrder)
+               .HasDefaultValueSql("Next Value For DeliveryOrder");
 
         }
 
