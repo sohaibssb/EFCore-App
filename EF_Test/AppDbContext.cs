@@ -23,6 +23,7 @@ namespace EF_Test
         public DbSet<Book> Books { get; set; }
         public DbSet<StudentBook> StudentBooks { get; set; }
         public DbSet<Attendance> Attendances { get; set; }
+        public DbSet<Invoice> Invoices { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -34,6 +35,19 @@ namespace EF_Test
 
                 relationship.DeleteBehavior = DeleteBehavior.Restrict;
             }
+
+            modelBuilder.Entity<Invoice>().Property(x => x.qty)
+                .HasDefaultValue(1);
+
+            modelBuilder.Entity<Invoice>().Property(x => x.createdDate)
+           .HasDefaultValueSql("GETDATE()");
+
+
+            modelBuilder.Entity<Invoice>().Property(x => x.fullName)
+                .HasComputedColumnSql("[customerTitle] + ' ' + [customerName]");
+            modelBuilder.Entity<Invoice>().Property(x => x.total)
+                .HasComputedColumnSql("[price] * [qty]");
+
         }
 
 
