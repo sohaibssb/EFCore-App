@@ -25,6 +25,7 @@ namespace EF_Test
         public DbSet<Attendance> Attendances { get; set; }
         public DbSet<Invoice> Invoices { get; set; }
         public DbSet<Uniform> Uniforms { get; set; }
+        public DbSet<Address> Addresses { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

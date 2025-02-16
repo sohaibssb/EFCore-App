@@ -28,5 +28,7 @@ namespace EF_Test.Models
         public ICollection<StudentBook> books { get; set; }
 
         public ICollection<Attendance> attendances { get; set; }
+
+        public ICollection<Address> addresses { get; set; }
     }
 }
