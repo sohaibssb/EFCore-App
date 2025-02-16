@@ -11,11 +11,11 @@ namespace EF_Test.Models
     {
         [Key]
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Author { get; set; }
+        public string? Name { get; set; }
+        public string? Author { get; set; }
         public DateTime Created { get; set; }
 
-        public ICollection<StudentBook> Students { get; set; }
+        public ICollection<StudentBook> Students { get; set; } = new List<StudentBook>();
 
         public int DeliveryOrder {  get; set; }
     }

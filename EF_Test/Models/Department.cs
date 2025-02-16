@@ -13,11 +13,11 @@ namespace EF_Test.Models
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Plese Enter the Name")]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         [MaxLength(5, ErrorMessage = "Max len can't be > 5 chrs")]
         public string? des { get; set; }
 
-        public ICollection<Student> students { get; set; }
+        public ICollection<Student> students { get; set; } = new List<Student>();
     }
 }

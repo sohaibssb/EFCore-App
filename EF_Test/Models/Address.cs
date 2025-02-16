@@ -19,7 +19,7 @@ namespace EF_Test.Models
 
         [ForeignKey("student")]
         public int StudentId { get; set; }
-        public Student student { get; set; }
+        public required Student student { get; set; }
 
     }
 }

@@ -12,11 +12,11 @@ namespace EF_Test.Models
         [Key]
         public int Id { get; set; }
 
-        public string customerTitle { get; set; } 
+        public string? customerTitle { get; set; } 
 
-        public string customerName { get; set; } 
+        public string? customerName { get; set; } 
 
-        public string fullName {  get; set; } 
+        public string? fullName {  get; set; } 
 
         public decimal price { get; set; }
         public decimal qty { get; set; } 

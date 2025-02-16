@@ -14,7 +14,7 @@ namespace EF_Test.Models
         [Key]
         public int Id { get; set; }
 
-        public string DayName { get; set; }
+        public string? DayName { get; set; }
 
         [Column("theName",TypeName = "varchar(20)")]
         public string? name { get; set; }
@@ -25,6 +25,6 @@ namespace EF_Test.Models
         [NotMapped]
         public DateTime theData {  get; set; }
 
-        public Student student { get; set; }
+        public required Student student { get; set; }
     }
 }
