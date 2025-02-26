@@ -10,11 +10,12 @@ public class Student
     public string Email { get; set; } = string.Empty;
     public int Age { get; set; }
     public int Grade { get; set; }
-    public required Grade grade { get; set; }
+    public DateTime Birthdate { get; set; }
+    public Grade? grade { get; set; }
 
     [ForeignKey("department")]
     public int departmentId { get; set; }
-    public required Department department { get; set; }
+    public Department? department { get; set; }
 
     public ICollection<StudentBook> books { get; set; } = new List<StudentBook>(); 
     public ICollection<Attendance> attendances { get; set; } = new List<Attendance>();

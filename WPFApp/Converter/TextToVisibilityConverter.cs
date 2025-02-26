@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
 
-namespace WPFApp.Converter  
+namespace WPFApp.Converter
 {
     public class TextToVisibilityConverter : IValueConverter
     {

@@ -1,21 +1,23 @@
-﻿// See https://aka.ms/new-console-template for more information
-using EF_Test;
+﻿using EF_Test;
 using EF_Test.Models;
-using System.ComponentModel.DataAnnotations;
+using System;
 
 Console.WriteLine("Hello, World!");
 
-
 using var db = new AppDbContext();
 
-// Insert
+var department = new Department()
+{
+    Id = 1, 
+    Name = "Computer Science",
+    des = "CS"
+};
 
-//var book = new Book()
-//{
-//    Name = "book 2",
-//    Author = "Author 2",
-//    Created = DateTime.Now,
-//};
+db.Departments.Add(department);
+db.SaveChanges();
+
+Console.WriteLine("Department added successfully!");
+
 
 var uniform = new Uniform()
 {
@@ -25,3 +27,5 @@ var uniform = new Uniform()
 
 db.Uniforms.Add(uniform);
 db.SaveChanges();
+
+Console.WriteLine("Uniform added successfully!");
