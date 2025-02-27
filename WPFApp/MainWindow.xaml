@@ -1,56 +1,9 @@
-﻿<Window x:Class="WPFApp.Views.MainWindow"
+﻿<Window x:Class="WPFApp.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:local="clr-namespace:WPFApp.Converter"  <!-- Ensure this matches -->
-    Title="Student Management" Height="350" Width="525">
-
-    <Window.Resources>
-        <local:TextToVisibilityConverter x:Key="TextToVisibilityConverter"/>
-    </Window.Resources>
-
-    <Grid Margin="10">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-
-        <!-- TextBox with Placeholder Effect -->
-        <Grid>
-            <TextBox Name="txtName"
-                     Width="200"
-                     Height="30"
-                     Text="{Binding StudentName, UpdateSourceTrigger=PropertyChanged}"
-                     VerticalAlignment="Center"
-                     Padding="5"
-                     FontSize="14"/>
-
-            <!-- Placeholder Text -->
-            <TextBlock Text="Enter Student Name"
-                       Foreground="Gray"
-                       FontSize="14"
-                       VerticalAlignment="Center"
-                       Margin="5,0,0,0"
-                       IsHitTestVisible="False"
-                       Visibility="{Binding StudentName, Converter={StaticResource TextToVisibilityConverter}}"/>
-        </Grid>
-
-        <!-- Another TextBox example for Email -->
-        <Grid Grid.Row="1">
-            <TextBox Name="txtEmail"
-                     Width="200"
-                     Height="30"
-                     Text="{Binding StudentEmail, UpdateSourceTrigger=PropertyChanged}"
-                     VerticalAlignment="Center"
-                     Padding="5"
-                     FontSize="14"/>
-
-            <TextBlock Text="Enter Email"
-                       Foreground="Gray"
-                       FontSize="14"
-                       VerticalAlignment="Center"
-                       Margin="5,0,0,0"
-                       IsHitTestVisible="False"
-                       Visibility="{Binding StudentEmail, Converter={StaticResource TextToVisibilityConverter}}"/>
-        </Grid>
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Button x:Name="LoadDataButton" Content="Load Students" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="120" Click="LoadDataButton_Click"/>
+        <DataGrid x:Name="StudentsDataGrid" Margin="10,50,10,10" AutoGenerateColumns="True"/>
     </Grid>
 </Window>

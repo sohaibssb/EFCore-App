@@ -1,44 +1,24 @@
-﻿using System;
-using System.ComponentModel;
-using System.Windows;
+﻿using System.Windows;
+using EF_Test; // Reference your EF_Test project
+using EF_Test.Models; // Reference your models
 
-namespace EF_Test.Views
+namespace WPFApp
 {
-    public partial class MainWindow : Window, INotifyPropertyChanged
+    public partial class MainWindow : Window
     {
-        private string _studentName = string.Empty;
-        private string _studentEmail = string.Empty;
-
-        public string StudentName
-        {
-            get => _studentName;
-            set
-            {
-                _studentName = value;
-                OnPropertyChanged(nameof(StudentName));
-            }
-        }
-
-        public string StudentEmail
-        {
-            get => _studentEmail;
-            set
-            {
-                _studentEmail = value;
-                OnPropertyChanged(nameof(StudentEmail));
-            }
-        }
+        private readonly AppDbContext _context;
 
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = this;
+            _context = new AppDbContext(); // Initialize your DbContext
         }
 
-        public event PropertyChangedEventHandler? PropertyChanged;
-        protected void OnPropertyChanged(string propertyName)
+        private void LoadDataButton_Click(object sender, RoutedEventArgs e)
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            // Load data from the Students table
+            var students = _context.Students.ToList();
+            StudentsDataGrid.ItemsSource = students; // Bind data to the DataGrid
         }
     }
 }
