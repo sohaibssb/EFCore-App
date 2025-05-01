@@ -60,6 +60,11 @@ namespace EF_Test
             modelBuilder.Entity<Uniform>().Property(p => p.DeliveryOrder)
                .HasDefaultValueSql("Next Value For DeliveryOrder");
 
+            modelBuilder.Entity<Gender>().HasData(
+                new Gender() { Id = 1, genderName = "Male" },
+                new Gender() { Id = 2, genderName = "Female" }
+                );
+
         }
 
 
